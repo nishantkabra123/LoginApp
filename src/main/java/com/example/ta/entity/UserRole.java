@@ -9,10 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import com.example.ta.entity.AppRole;
  
 @Entity
-@Table(name = "User_Role", //
-        uniqueConstraints = { //
+@Table(name = "User_Role",
+        uniqueConstraints = { 
                 @UniqueConstraint(name = "USER_ROLE_UK", columnNames = { "User_Id", "Role_Id" }) })
 public class UserRole {
  

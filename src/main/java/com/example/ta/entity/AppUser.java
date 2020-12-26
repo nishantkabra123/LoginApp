@@ -8,8 +8,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
  
 @Entity
-@Table(name = "App_User", //
-        uniqueConstraints = { //
+@Table(name = "App_User", 
+        uniqueConstraints = { 
                 @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
 public class AppUser {
  
