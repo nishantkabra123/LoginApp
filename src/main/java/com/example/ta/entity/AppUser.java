@@ -26,8 +26,19 @@ public class AppUser {
  
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
+    
+    @Column(name = "Company_Id", nullable = false)
+    private Integer companyId;
  
-    public Long getUserId() {
+    public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
+	}
+
+	public Long getUserId() {
         return userId;
     }
  

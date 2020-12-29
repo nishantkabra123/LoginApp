@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.example.ta.dao.AppRoleDAO;
 import com.example.ta.dao.AppUserDAO;
 import com.example.ta.entity.AppUser;
+import com.example.ta.entity.CustomUserDetails;
  
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -26,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private AppRoleDAO appRoleDAO;
  
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+    public CustomUserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AppUser appUser = this.appUserDAO.findUserAccount(userName);
  
         if (appUser == null) {
@@ -46,9 +47,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             }
         }
  
-        UserDetails userDetails = (UserDetails) new User(appUser.getUserName(), 
-                appUser.getEncrytedPassword(), grantList);
- 
+//        UserDetails userDetails = (UserDetails) new User(appUser.getUserName(), 
+//                appUser.getEncrytedPassword(), grantList);
+        
+        CustomUserDetails userDetails = (CustomUserDetails) new CustomUserDetails(appUser.getUserName(), 
+              appUser.getEncrytedPassword(),appUser.getCompanyId(),grantList);
+        
         return userDetails;
     }
  
